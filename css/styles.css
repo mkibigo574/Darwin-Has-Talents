@@ -1181,12 +1181,164 @@ a:hover { color: var(--primary-hover); }
   box-shadow: var(--shadow-md);
 }
 
-.gform-iframe {
-  width: 100%;
-  height: 1205px;
-  border: none;
-  display: block;
+/* ---- Custom Google Form UI ---- */
+.custom-gform {
+  padding: 36px 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
+
+.cgf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cgf-group label:first-child {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--secondary);
+}
+
+.cgf-required { color: var(--primary); margin-left: 2px; }
+
+.cgf-group input[type="text"],
+.cgf-group input[type="email"] {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 15px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.cgf-group input::placeholder { color: var(--text-light); }
+.cgf-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+  background: #fff;
+}
+.cgf-group.has-error input,
+.cgf-group.has-error .cgf-select-wrap select {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+}
+
+/* Radio pill group */
+.cgf-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cgf-radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  user-select: none;
+}
+.cgf-radio:hover {
+  border-color: rgba(255,107,107,0.4);
+  background: rgba(255,107,107,0.03);
+}
+.cgf-radio input[type="radio"] { display: none; }
+.cgf-radio span {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.cgf-radio:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(255,107,107,0.06);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+}
+.cgf-radio:has(input:checked) span { color: var(--secondary); font-weight: 600; }
+
+/* Select */
+.cgf-select-wrap {
+  position: relative;
+}
+.cgf-select-wrap select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 40px 12px 15px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text-muted);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.cgf-select-wrap select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+  background: #fff;
+}
+.cgf-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px; height: 18px;
+  color: var(--text-light);
+  pointer-events: none;
+}
+
+/* Error messages */
+.cgf-error {
+  font-size: 0.78rem;
+  color: #ef4444;
+  font-weight: 500;
+  display: none;
+}
+.cgf-group.has-error .cgf-error { display: block; }
+
+/* Submit button spinner */
+.cgf-submit { position: relative; }
+.btn-spinner { display: flex; align-items: center; gap: 8px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.8s linear infinite; }
+
+/* Success state */
+.cgf-success {
+  padding: 52px 36px;
+  text-align: center;
+}
+.cgf-success .success-icon {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  background: rgba(74,222,128,0.1);
+  color: #22c55e;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+}
+.cgf-success .success-icon svg { width: 30px; height: 30px; }
+.cgf-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+.cgf-success p { color: var(--text-muted); font-size: 0.95rem; }
 
 /* Forms — light style */
 .form-row {

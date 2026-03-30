@@ -362,16 +362,66 @@
         </div>
 
         <div class="gform-container">
-<iframe
-            id="waitlistGform"
-            src="https://docs.google.com/forms/d/e/1FAIpQLSe29UGd-X-3vQIgfRqW8I6RcZNalW5zOpnErlOiCzQFezneeQ/viewform?embedded=true"
-            class="gform-iframe"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            title="Darwin Has Talent 2027 Waitlist"
-            loading="lazy"
-          >Loading form…</iframe>
+          <form class="custom-gform" id="waitlistForm" novalidate>
+
+            <div class="cgf-group">
+              <label for="wf-name">Full Name <span class="cgf-required">*</span></label>
+              <input type="text" id="wf-name" name="entry.997698696" placeholder="e.g. Alex Johnson" required autocomplete="name">
+              <span class="cgf-error">Please enter your full name.</span>
+            </div>
+
+            <div class="cgf-group">
+              <label for="wf-email">Email Address <span class="cgf-required">*</span></label>
+              <input type="email" id="wf-email" name="entry.1555752851" placeholder="e.g. alex@email.com" required autocomplete="email">
+              <span class="cgf-error">Please enter a valid email address.</span>
+            </div>
+
+            <div class="cgf-group">
+              <label>I am a... <span class="cgf-required">*</span></label>
+              <div class="cgf-radio-group" id="wf-role">
+                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Musician / Artist" required><span>🎵 Musician / Artist</span></label>
+                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Parent / Guardian"><span>👨‍👧 Parent / Guardian</span></label>
+                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Teacher / Educator"><span>🏫 Teacher / Educator</span></label>
+                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Potential Sponsor / Partner"><span>🤝 Potential Sponsor</span></label>
+                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Community Member / Supporter"><span>🌏 Community Member</span></label>
+              </div>
+              <span class="cgf-error" id="role-error">Please select an option.</span>
+            </div>
+
+            <div class="cgf-group">
+              <label for="wf-region">Your Region</label>
+              <div class="cgf-select-wrap">
+                <select id="wf-region" name="entry.1401430195">
+                  <option value="" disabled selected>Select your region</option>
+                  <option value="Darwin / Top End">Darwin / Top End</option>
+                  <option value="Katherine / Big Rivers">Katherine / Big Rivers</option>
+                  <option value="Tennant Creek / Barkly">Tennant Creek / Barkly</option>
+                  <option value="Alice Springs / Red Centre">Alice Springs / Red Centre</option>
+                  <option value="Outside the NT">Outside the NT</option>
+                  <option value="Other">Other</option>
+                </select>
+                <svg class="cgf-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-full cgf-submit" id="wfSubmitBtn">
+              <span class="btn-label">Join the 2027 Waitlist &rarr;</span>
+              <span class="btn-spinner" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                Submitting…
+              </span>
+            </button>
+
+            <p class="form-disclaimer">We respect your privacy. Unsubscribe at any time.</p>
+          </form>
+
+          <div class="cgf-success" id="waitlistSuccess" hidden>
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>You're on the list!</h3>
+            <p>We'll be in touch when 2027 auditions open. Welcome to the Darwin Has Talent community.</p>
+          </div>
         </div>
       </div>
     </div>

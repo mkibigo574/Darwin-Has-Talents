@@ -110,6 +110,55 @@
   });
 
 
+  // ---------- Waitlist → Google Forms silent submit ----------
+  var GFORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe29UGd-X-3vQIgfRqW8I6RcZNalW5zOpnErlOiCzQFezneeQ/formResponse';
+
+  var waitlistForm    = document.getElementById('waitlistForm');
+  var waitlistSuccess = document.getElementById('waitlistSuccess');
+
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Validate
+      var valid = true;
+
+      var nameGroup = waitlistForm.querySelector('#wf-name').closest('.cgf-group');
+      var emailGroup = waitlistForm.querySelector('#wf-email').closest('.cgf-group');
+      var roleChecked = waitlistForm.querySelector('input[name="entry.1483143165"]:checked');
+
+      nameGroup.classList.remove('has-error');
+      emailGroup.classList.remove('has-error');
+      document.getElementById('role-error').style.display = 'none';
+
+      if (!waitlistForm.querySelector('#wf-name').value.trim()) {
+        nameGroup.classList.add('has-error'); valid = false;
+      }
+      var emailVal = waitlistForm.querySelector('#wf-email').value.trim();
+      if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        emailGroup.classList.add('has-error'); valid = false;
+      }
+      if (!roleChecked) {
+        document.getElementById('role-error').style.display = 'block'; valid = false;
+      }
+      if (!valid) return;
+
+      // Show spinner
+      var btn = document.getElementById('wfSubmitBtn');
+      btn.querySelector('.btn-label').hidden = true;
+      btn.querySelector('.btn-spinner').hidden = false;
+      btn.disabled = true;
+
+      // Submit to Google Forms (no-cors — response is opaque but data is saved)
+      var body = new FormData(waitlistForm);
+      fetch(GFORM_URL, { method: 'POST', mode: 'no-cors', body: body })
+        .finally(function () {
+          waitlistForm.hidden = true;
+          waitlistSuccess.hidden = false;
+        });
+    });
+  }
+
   // ---------- Contact form ----------
   var contactForm = document.getElementById('contactForm');
 
