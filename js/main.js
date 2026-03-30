@@ -109,16 +109,6 @@
     obs.observe(el);
   });
 
-  // ---------- Google Forms embed — show iframe once URL is set ----------
-  var gformIframe      = document.getElementById('waitlistGform');
-  var gformPlaceholder = document.getElementById('gformPlaceholder');
-  var PLACEHOLDER_URL  = 'YOUR_GOOGLE_FORM_EMBED_URL';
-
-  if (gformIframe && gformIframe.src && gformIframe.src.indexOf(PLACEHOLDER_URL) === -1) {
-    // Real URL has been set — hide placeholder, show iframe
-    if (gformPlaceholder) gformPlaceholder.hidden = true;
-    gformIframe.hidden = false;
-  }
 
   // ---------- Contact form ----------
   var contactForm = document.getElementById('contactForm');

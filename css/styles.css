@@ -1179,44 +1179,13 @@ a:hover { color: var(--primary-hover); }
   border-radius: var(--r-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  min-height: 520px;
-  display: flex;
-  align-items: stretch;
 }
 
 .gform-iframe {
   width: 100%;
-  min-height: 620px;
+  height: 1205px;
   border: none;
   display: block;
-}
-
-/* Placeholder shown until URL is set */
-.gform-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 48px 32px;
-  text-align: center;
-  width: 100%;
-}
-.gform-placeholder p {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-.gform-placeholder code {
-  font-size: 0.78rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  padding: 8px 14px;
-  color: var(--primary);
-  font-family: monospace;
-  word-break: break-all;
 }
 
 /* Forms — light style */
