@@ -233,17 +233,15 @@ a:hover { color: var(--primary-hover); }
   text-decoration: none;
 }
 
-.logo-icon {
-  width: 34px; height: 34px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+.logo-img {
+  width: 38px;
+  height: 38px;
   border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+  border: 1.5px solid rgba(255,107,107,0.25);
 }
-.logo-icon svg { width: 19px; height: 19px; }
 
 .logo-text {
   font-family: var(--font-display);
@@ -474,6 +472,18 @@ a:hover { color: var(--primary-hover); }
   border: 1px solid rgba(255,255,255,0.06);
   top: 38px; right: 0;
   transform: rotate(5deg);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-card-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  opacity: 0.6;
 }
 
 .hero-card--front {
