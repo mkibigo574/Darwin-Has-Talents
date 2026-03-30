@@ -364,26 +364,69 @@
         <div class="gform-container">
           <form class="custom-gform" id="waitlistForm" novalidate>
 
-            <div class="cgf-group">
-              <label for="wf-name">Full Name <span class="cgf-required">*</span></label>
-              <input type="text" id="wf-name" name="entry.997698696" placeholder="e.g. Alex Johnson" required autocomplete="name">
-              <span class="cgf-error">Please enter your full name.</span>
+            <div class="cgf-row">
+              <div class="cgf-group">
+                <label for="wf-name">Full Name <span class="cgf-required">*</span></label>
+                <div class="cgf-input-wrap">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 10a4 4 0 100-8 4 4 0 000 8z"/><path d="M3 18c0-4 3.134-7 7-7s7 3 7 7"/></svg>
+                  <input type="text" id="wf-name" name="entry.997698696" placeholder="Your full name" required autocomplete="name">
+                </div>
+                <span class="cgf-error">Please enter your full name.</span>
+              </div>
+
+              <div class="cgf-group">
+                <label for="wf-email">Email Address <span class="cgf-required">*</span></label>
+                <div class="cgf-input-wrap">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 4h16a1 1 0 011 1v10a1 1 0 01-1 1H2a1 1 0 01-1-1V5a1 1 0 011-1z"/><polyline points="1,4 10,11 19,4"/></svg>
+                  <input type="email" id="wf-email" name="entry.1555752851" placeholder="your@email.com" required autocomplete="email">
+                </div>
+                <span class="cgf-error">Please enter a valid email address.</span>
+              </div>
             </div>
 
             <div class="cgf-group">
-              <label for="wf-email">Email Address <span class="cgf-required">*</span></label>
-              <input type="email" id="wf-email" name="entry.1555752851" placeholder="e.g. alex@email.com" required autocomplete="email">
-              <span class="cgf-error">Please enter a valid email address.</span>
-            </div>
-
-            <div class="cgf-group">
-              <label>I am a... <span class="cgf-required">*</span></label>
+              <label>I am a <span class="cgf-required">*</span></label>
               <div class="cgf-radio-group" id="wf-role">
-                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Musician / Artist" required><span>🎵 Musician / Artist</span></label>
-                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Parent / Guardian"><span>👨‍👧 Parent / Guardian</span></label>
-                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Teacher / Educator"><span>🏫 Teacher / Educator</span></label>
-                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Potential Sponsor / Partner"><span>🤝 Potential Sponsor</span></label>
-                <label class="cgf-radio"><input type="radio" name="entry.1483143165" value="Community Member / Supporter"><span>🌏 Community Member</span></label>
+                <label class="cgf-radio">
+                  <input type="radio" name="entry.1483143165" value="Musician / Artist" required>
+                  <span class="cgf-radio-box">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="16" r="2.5"/><circle cx="15" cy="14" r="2.5"/><polyline points="9.5,16 9.5,6 17.5,4 17.5,14"/></svg>
+                    <span class="cgf-radio-label">Musician / Artist</span>
+                    <span class="cgf-radio-check"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>
+                  </span>
+                </label>
+                <label class="cgf-radio">
+                  <input type="radio" name="entry.1483143165" value="Parent / Guardian">
+                  <span class="cgf-radio-box">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M6 16c0-3.314 1.79-5 4-5s4 1.686 4 5"/><path d="M2.5 17c0-2.5 1-4 2.5-4"/><circle cx="3" cy="10" r="2"/><path d="M17.5 17c0-2.5-1-4-2.5-4"/><circle cx="17" cy="10" r="2"/></svg>
+                    <span class="cgf-radio-label">Parent / Guardian</span>
+                    <span class="cgf-radio-check"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>
+                  </span>
+                </label>
+                <label class="cgf-radio">
+                  <input type="radio" name="entry.1483143165" value="Teacher / Educator">
+                  <span class="cgf-radio-box">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                    <span class="cgf-radio-label">Teacher / Educator</span>
+                    <span class="cgf-radio-check"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>
+                  </span>
+                </label>
+                <label class="cgf-radio">
+                  <input type="radio" name="entry.1483143165" value="Potential Sponsor / Partner">
+                  <span class="cgf-radio-box">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M5 7H3a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-2"/><rect x="7" y="3" width="6" height="6" rx="1"/></svg>
+                    <span class="cgf-radio-label">Sponsor / Partner</span>
+                    <span class="cgf-radio-check"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>
+                  </span>
+                </label>
+                <label class="cgf-radio">
+                  <input type="radio" name="entry.1483143165" value="Community Member / Supporter">
+                  <span class="cgf-radio-box">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="6" r="3"/><path d="M2 18c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                    <span class="cgf-radio-label">Community Member</span>
+                    <span class="cgf-radio-check"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>
+                  </span>
+                </label>
               </div>
               <span class="cgf-error" id="role-error">Please select an option.</span>
             </div>
@@ -391,6 +434,7 @@
             <div class="cgf-group">
               <label for="wf-region">Your Region</label>
               <div class="cgf-select-wrap">
+                <svg class="cgf-select-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 2a6 6 0 00-6 6c0 4 6 10 6 10s6-6 6-10a6 6 0 00-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
                 <select id="wf-region" name="entry.1401430195">
                   <option value="" disabled selected>Select your region</option>
                   <option value="Darwin / Top End">Darwin / Top End</option>
@@ -405,7 +449,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg btn-full cgf-submit" id="wfSubmitBtn">
-              <span class="btn-label">Join the 2027 Waitlist &rarr;</span>
+              <span class="btn-label">Join the 2027 Waitlist</span>
               <span class="btn-spinner" hidden>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
                 Submitting…

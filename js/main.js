@@ -143,19 +143,13 @@
       }
       if (!valid) return;
 
-      // Show spinner
-      var btn = document.getElementById('wfSubmitBtn');
-      btn.querySelector('.btn-label').hidden = true;
-      btn.querySelector('.btn-spinner').hidden = false;
-      btn.disabled = true;
-
-      // Submit to Google Forms (no-cors — response is opaque but data is saved)
+      // Fire-and-forget — Google Forms doesn't return a usable response with no-cors
       var body = new FormData(waitlistForm);
-      fetch(GFORM_URL, { method: 'POST', mode: 'no-cors', body: body })
-        .finally(function () {
-          waitlistForm.hidden = true;
-          waitlistSuccess.hidden = false;
-        });
+      fetch(GFORM_URL, { method: 'POST', mode: 'no-cors', body: body }).catch(function () {});
+
+      // Show success immediately without waiting for the fetch
+      waitlistForm.hidden = true;
+      waitlistSuccess.hidden = false;
     });
   }
 
