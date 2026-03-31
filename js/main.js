@@ -5,6 +5,36 @@
 (function () {
   'use strict';
 
+  // ---------- Countdown timer ----------
+  var AUDITION_DATE = new Date('2027-01-01T00:00:00');
+  function updateCountdown() {
+    var now  = new Date();
+    var diff = AUDITION_DATE - now;
+    if (diff <= 0) {
+      document.getElementById('cdDays').textContent  = '00';
+      document.getElementById('cdHours').textContent = '00';
+      document.getElementById('cdMins').textContent  = '00';
+      document.getElementById('cdSecs').textContent  = '00';
+      return;
+    }
+    var days  = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins  = Math.floor((diff % 3600000)  / 60000);
+    var secs  = Math.floor((diff % 60000)    / 1000);
+    var d = document.getElementById('cdDays');
+    var h = document.getElementById('cdHours');
+    var m = document.getElementById('cdMins');
+    var s = document.getElementById('cdSecs');
+    if (d) d.textContent = String(days).padStart(3, '0');
+    if (h) h.textContent = String(hours).padStart(2, '0');
+    if (m) m.textContent = String(mins).padStart(2, '0');
+    if (s) s.textContent = String(secs).padStart(2, '0');
+  }
+  if (document.getElementById('cdDays')) {
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
   // ---------- Hero video fade-in ----------
   var heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {

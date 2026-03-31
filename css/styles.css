@@ -303,7 +303,7 @@ a:hover { color: var(--primary-hover); }
   background: #0d1420;
   display: flex;
   align-items: center;
-  padding-top: 76px;
+  padding-top: 90px;
   position: relative;
   overflow: hidden;
 }
@@ -1758,10 +1758,10 @@ a:hover { color: var(--primary-hover); }
    RESPONSIVE
    ================================================ */
 @media (max-width: 1024px) {
-  .hero-layout { grid-template-columns: 1fr; text-align: center; }
+  .hero-layout { grid-template-columns: 1fr; text-align: center; gap: 28px; }
   .hero-content { display: flex; flex-direction: column; align-items: center; }
   .hero-subtitle { max-width: 560px; text-align: center; }
-  .hero-visual { display: none; }
+  .hero-visual { order: -1; }
   .pillars-grid { grid-template-columns: 1fr 1fr; }
   .portals-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
   .story-layout { grid-template-columns: 1fr; }
@@ -1803,8 +1803,16 @@ a:hover { color: var(--primary-hover); }
   /* Keep toggle white always on mobile */
   .navbar.scrolled .nav-toggle span { background: var(--secondary); }
 
-  .hero { height: 100vh; padding-top: 62px; }
+  .hero { height: 100vh; padding-top: 74px; }
   .hero-stats { width: 100%; }
+  .hero-layout { gap: 16px; }
+  .hero-visual { order: -1; }
+  .hero-title { font-size: clamp(2rem, 7vw, 3rem); }
+  .hero-subtitle { font-size: 0.92rem; margin-bottom: 18px; }
+  .hero-prizes { margin: 10px 0 16px; gap: 5px; }
+  .hero-prize-item { font-size: 0.82rem; }
+  .hero-cta { margin-bottom: 20px; }
+  .hero-stats { display: none; }
 
   .pillars-grid { grid-template-columns: 1fr; }
 
@@ -1833,6 +1841,13 @@ a:hover { color: var(--primary-hover); }
   .hero-cta .btn { justify-content: center; }
   .form-row-2 { grid-template-columns: 1fr; }
   .portals-grid { max-width: 100%; }
+  .hero-title { font-size: clamp(1.7rem, 8vw, 2.4rem); }
+  .hero-badge { font-size: 0.6rem; letter-spacing: 2px; padding: 5px 12px; margin-bottom: 14px; }
+  .countdown-unit { min-width: 48px; padding: 8px 8px 6px; border-radius: 10px; }
+  .countdown-num  { font-size: 1.3rem; }
+  .countdown-colon { font-size: 1.1rem; margin-bottom: 12px; }
+  .hero-prizes { gap: 4px; }
+  .hero-prize-item { font-size: 0.78rem; }
 }
 
 /* ========== HERO PRIZES ========== */
@@ -2014,4 +2029,114 @@ a:hover { color: var(--primary-hover); }
   .resources-grid { grid-template-columns: 1fr; }
   .resource-card { flex-direction: column; }
   .hero-prizes { margin: 16px 0 22px; }
+}
+
+/* ========== COUNTDOWN TIMER ========== */
+.hero-countdown-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeUp 0.65s ease-out 0.2s both;
+}
+.countdown-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 18px 20px 14px;
+  min-width: 82px;
+  backdrop-filter: blur(8px);
+}
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: block;
+}
+.countdown-lbl {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 8px;
+}
+.countdown-colon {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 22px;
+  opacity: 0.7;
+}
+.countdown-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 18px;
+}
+
+/* ========== SCROLLING TICKER ========== */
+.ticker-wrap {
+  background: var(--primary);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 13px 0;
+}
+.ticker-track {
+  display: inline-block;
+  animation: ticker 28s linear infinite;
+}
+.ticker-track span {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #fff;
+  padding: 0 18px;
+}
+.ticker-dot {
+  color: rgba(255,255,255,0.5) !important;
+  font-size: 0.6rem !important;
+  padding: 0 4px !important;
+  letter-spacing: 0 !important;
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+
+@media (max-width: 768px) {
+  .countdown-unit { min-width: 56px; padding: 10px 10px 8px; }
+  .countdown-num  { font-size: 1.5rem; }
+  .countdown-lbl  { font-size: 0.55rem; margin-top: 5px; letter-spacing: 1.5px; }
+  .countdown-grid { gap: 4px; }
+  .countdown-colon { font-size: 1.4rem; margin-bottom: 16px; }
+  .countdown-eyebrow { font-size: 0.62rem; margin-bottom: 12px; letter-spacing: 3px; }
+  .countdown-sub  { font-size: 0.62rem; margin-top: 10px; }
+  .ticker-track span { font-size: 0.68rem; letter-spacing: 2px; padding: 0 12px; }
+  .ticker-wrap { padding: 10px 0; }
 }

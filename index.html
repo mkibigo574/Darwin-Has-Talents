@@ -50,35 +50,35 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          <span>2027 &mdash; Northern Territory, Australia</span>
+          <span>Northern Territory &mdash; The Countdown Is On</span>
         </div>
         <h1 class="hero-title">
-          NT's Got Talent —<br>
-          <span class="hero-title-accent">Now Prove It.</span>
+          This Is Your<br>
+          <span class="hero-title-accent">Shot. Take It.</span>
         </h1>
         <p class="hero-subtitle">
-          Compete. Get voted. Win your future. Darwin Has Talent is the NT's first territory-wide music competition — from the Red Centre to the Top End — built to launch real careers.
+          Darwin Has Talent is the NT's first territory-wide music competition. Audition. Get voted. Stand on the biggest stage the Territory has ever seen.
         </p>
         <div class="hero-prizes">
           <div class="hero-prize-item">
             <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span>Perform live at the Darwin Grand Finale</span>
+            <span>Live Grand Finale — Darwin, NT</span>
           </div>
           <div class="hero-prize-item">
             <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span>Go viral — industry exposure &amp; media spotlight</span>
+            <span>Industry exposure, media spotlight, go viral</span>
           </div>
           <div class="hero-prize-item">
             <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span>Professional mentorship &amp; recording opportunities</span>
+            <span>Pro mentorship, recording &amp; real career doors</span>
           </div>
         </div>
         <div class="hero-cta">
           <a href="#waitlist" class="btn btn-primary btn-lg">
             <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
-            Register Your Interest
+            I Want In &rarr;
           </a>
-          <a href="#portals" class="btn btn-ghost btn-lg">Partner With Us &rarr;</a>
+          <a href="#portals" class="btn btn-ghost btn-lg">How It Works</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
@@ -98,24 +98,30 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-card-stack">
-          <div class="hero-card hero-card--back">
-            <img src="assets/images/logo.jpeg" alt="" class="hero-card-logo">
-          </div>
-          <div class="hero-card hero-card--front">
-            <div class="hcard-label">Grand Finale</div>
-            <div class="hcard-city">Darwin, NT</div>
-            <div class="hcard-year">2027</div>
-            <div class="hcard-waveform">
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span>
+        <div class="hero-countdown-wrap">
+          <p class="countdown-eyebrow">Auditions Open In</p>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cdDays">---</span>
+              <span class="countdown-lbl">Days</span>
             </div>
-            <div class="hcard-badge">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              Launching 2027
+            <div class="countdown-colon">:</div>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cdHours">--</span>
+              <span class="countdown-lbl">Hours</span>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cdMins">--</span>
+              <span class="countdown-lbl">Mins</span>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cdSecs">--</span>
+              <span class="countdown-lbl">Secs</span>
             </div>
           </div>
+          <p class="countdown-sub">Grand Finale &mdash; Darwin, NT &mdash; 2027</p>
         </div>
       </div>
     </div>
@@ -125,15 +131,38 @@
     </div>
   </section>
 
+  <!-- ========== TICKER ========== -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span>PERFORM LIVE</span><span class="ticker-dot">&#9733;</span>
+      <span>COMPETE FOR REAL</span><span class="ticker-dot">&#9733;</span>
+      <span>GET VOTED IN</span><span class="ticker-dot">&#9733;</span>
+      <span>GO VIRAL</span><span class="ticker-dot">&#9733;</span>
+      <span>WIN YOUR FUTURE</span><span class="ticker-dot">&#9733;</span>
+      <span>DARWIN 2027</span><span class="ticker-dot">&#9733;</span>
+      <span>4 REGIONS</span><span class="ticker-dot">&#9733;</span>
+      <span>3,000 KM OF TALENT</span><span class="ticker-dot">&#9733;</span>
+      <span>ONE GRAND FINALE</span><span class="ticker-dot">&#9733;</span>
+      <span>PERFORM LIVE</span><span class="ticker-dot">&#9733;</span>
+      <span>COMPETE FOR REAL</span><span class="ticker-dot">&#9733;</span>
+      <span>GET VOTED IN</span><span class="ticker-dot">&#9733;</span>
+      <span>GO VIRAL</span><span class="ticker-dot">&#9733;</span>
+      <span>WIN YOUR FUTURE</span><span class="ticker-dot">&#9733;</span>
+      <span>DARWIN 2027</span><span class="ticker-dot">&#9733;</span>
+      <span>4 REGIONS</span><span class="ticker-dot">&#9733;</span>
+      <span>3,000 KM OF TALENT</span><span class="ticker-dot">&#9733;</span>
+      <span>ONE GRAND FINALE</span><span class="ticker-dot">&#9733;</span>
+    </div>
+  </div>
+
   <!-- ========== VISION SECTION (WHITE) ========== -->
   <section class="section vision section--white" id="vision">
     <div class="container">
       <div class="section-header">
-        <p class="section-tag">Our Vision</p>
-        <h2 class="section-title">Stopping the Talent Drain</h2>
+        <p class="section-tag">The Movement</p>
+        <h2 class="section-title">The NT Is Done Being Slept On.</h2>
         <p class="section-subtitle">
-          We are building the bridge between the high school music room and the national stage,
-          so NT's brightest musicians never have to choose between home and their dreams.
+          Too many NT artists had to leave home just to be heard. That ends in 2027. Darwin Has Talent is the stage they never had — built right here, for all of them.
         </p>
       </div>
 
@@ -142,22 +171,22 @@
           <div class="pillar-icon-wrap" style="--ic: #FF6B6B1A; --icb: #FF6B6B;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <h3>Retention of Talent</h3>
-          <p>Stop the "brain drain" of NT creatives by providing school leavers and upcoming artists with high-level opportunities to perform, record, and grow without needing to move interstate.</p>
+          <h3>Stay Home. Blow Up.</h3>
+          <p>No more moving interstate just to be heard. DHT gives NT artists a professional platform, real industry exposure, and a pathway to a music career — without leaving the Territory.</p>
         </div>
         <div class="pillar-card pillar-card--featured">
           <div class="pillar-icon-wrap" style="--ic: #FF6B6B1A; --icb: #FF6B6B;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
           </div>
-          <h3>Territory-Wide Equity</h3>
-          <p>Talent isn't just in the capital city. Our commitment reaches the Red Centre, the Big Rivers, and the Barkly regions, ensuring every young Territorian has a stage.</p>
+          <h3>Every Corner. Every Voice.</h3>
+          <p>From Alice Springs to Darwin — talent doesn't care about postcode. We're taking the stage to all four regions so no one gets left behind because of where they grew up.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-icon-wrap" style="--ic: #FF6B6B1A; --icb: #FF6B6B;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <h3>Industry Excellence</h3>
-          <p>We aren't just a competition; we are a professional bridge. By connecting artists with mentors, technical crews, and media exposure, we raise the standard of the local music economy.</p>
+          <h3>This Is the Real Deal.</h3>
+          <p>Professional production. Real mentors. Actual industry connections. DHT isn't a school concert — it's a launchpad built to the same standard as the national stage.</p>
         </div>
       </div>
 
@@ -258,9 +287,9 @@
   <section class="section portals section--bg" id="portals">
     <div class="container">
       <div class="section-header">
-        <p class="section-tag">Get Involved</p>
-        <h2 class="section-title">Find Your Role in the Story</h2>
-        <p class="section-subtitle">Whether you're an artist, a business, or a community member — there's a place for you in Darwin Has Talent.</p>
+        <p class="section-tag">Pick Your Lane</p>
+        <h2 class="section-title">How Do You Want In?</h2>
+        <p class="section-subtitle">Artist, sponsor, or supporter — everyone has a role to play. The NT's biggest music moment needs all of you.</p>
       </div>
 
       <div class="portals-grid">
@@ -272,13 +301,13 @@
             <span class="portal-number">01</span>
           </div>
           <h3>For Musicians</h3>
-          <p>Register your interest for 2027 auditions. Be the first to get the full info pack when applications open.</p>
+          <p>If you've got the talent, 2027 is your year. Register now and be the first to know when auditions drop.</p>
           <ul class="portal-list">
-            <li>Early access to audition info</li>
-            <li>Mentorship opportunities</li>
-            <li>Professional performance platform</li>
+            <li>First access when auditions open</li>
+            <li>Pro mentorship &amp; industry coaching</li>
+            <li>Perform on the Territory's biggest stage</li>
           </ul>
-          <a href="#waitlist" class="btn btn-primary">Register Interest &rarr;</a>
+          <a href="#waitlist" class="btn btn-primary">Lock In My Spot &rarr;</a>
         </div>
 
         <div class="portal-card portal-card--sponsors portal-card--featured">
@@ -290,13 +319,13 @@
             <span class="portal-number">02</span>
           </div>
           <h3>For Sponsors</h3>
-          <p>Download our 2026/27 Partnership Prospectus. Help us build the future of NT music and align your brand with purpose.</p>
+          <p>Align your brand with the NT's most exciting cultural moment. Our 2026/27 Partnership Prospectus is ready for you.</p>
           <ul class="portal-list">
-            <li>Brand visibility across all regions</li>
-            <li>Community & government alignment</li>
-            <li>NT-first legacy association</li>
+            <li>Massive brand visibility across all 4 regions</li>
+            <li>Community &amp; government alignment</li>
+            <li>NT-first legacy that actually matters</li>
           </ul>
-          <a href="#contact" class="btn btn-primary">Download Prospectus &rarr;</a>
+          <a href="#contact" class="btn btn-primary">Let's Talk &rarr;</a>
         </div>
 
         <div class="portal-card portal-card--community">
@@ -307,13 +336,13 @@
             <span class="portal-number">03</span>
           </div>
           <h3>For Community</h3>
-          <p>Sign up for the 'Founder's Diary' newsletter. Follow our progress from idea to stage — and be part of something Territory-born.</p>
+          <p>You don't have to perform to be part of this. Follow the journey, spread the word, and help us build something the NT has never seen.</p>
           <ul class="portal-list">
             <li>Monthly Founder's Diary updates</li>
-            <li>Talent Spotlight interviews</li>
-            <li>Behind-the-scenes access</li>
+            <li>Talent Spotlight &amp; behind-the-scenes</li>
+            <li>Be part of NT music history</li>
           </ul>
-          <a href="#waitlist" class="btn btn-primary">Subscribe &rarr;</a>
+          <a href="#waitlist" class="btn btn-primary">Follow the Journey &rarr;</a>
         </div>
       </div>
     </div>
