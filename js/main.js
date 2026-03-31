@@ -5,6 +5,18 @@
 (function () {
   'use strict';
 
+  // ---------- Hero video fade-in ----------
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    function onVideoReady() { heroVideo.classList.add('loaded'); }
+    if (heroVideo.readyState >= 3) {
+      onVideoReady();
+    } else {
+      heroVideo.addEventListener('canplaythrough', onVideoReady, { once: true });
+      heroVideo.addEventListener('loadeddata', onVideoReady, { once: true });
+    }
+  }
+
   // ---------- Navbar scroll ----------
   var navbar = document.getElementById('navbar');
   window.addEventListener('scroll', function () {
@@ -110,7 +122,23 @@
   });
 
 
-  // ---------- Waitlist → Google Forms silent submit ----------
+  // ---------- Supabase config ----------
+  var SB_URL = 'https://mxaezkfyowvotzfrnfil.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14YWV6a2Z5b3d2b3R6ZnJuZmlsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NzA2MzAsImV4cCI6MjA4NzQ0NjYzMH0.ueMC6olfg0oR7mG_UtdcRCk61YRdMGzkUdqiHvmirT4';
+
+  function sbInsert(table, payload) {
+    return fetch(SB_URL + '/rest/v1/' + table, {
+      method: 'POST',
+      headers: {
+        'apikey': SB_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    }).catch(function () {});
+  }
+
+  // ---------- Waitlist → Google Forms + Supabase ----------
   var GFORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe29UGd-X-3vQIgfRqW8I6RcZNalW5zOpnErlOiCzQFezneeQ/formResponse';
 
   var waitlistForm    = document.getElementById('waitlistForm');
@@ -143,28 +171,43 @@
       }
       if (!valid) return;
 
-      // Fire-and-forget — Google Forms doesn't return a usable response with no-cors
-      var body = new FormData(waitlistForm);
-      fetch(GFORM_URL, { method: 'POST', mode: 'no-cors', body: body }).catch(function () {});
+      var nameVal   = waitlistForm.querySelector('#wf-name').value.trim();
+      var regionVal = waitlistForm.querySelector('#wf-region').value;
+      var roleVal   = roleChecked ? roleChecked.value : '';
 
-      // Show success immediately without waiting for the fetch
+      // Send to Google Forms (fire-and-forget)
+      var gBody = new FormData(waitlistForm);
+      fetch(GFORM_URL, { method: 'POST', mode: 'no-cors', body: gBody }).catch(function () {});
+
+      // Send to Supabase (fire-and-forget)
+      sbInsert('registrations', {
+        name:   nameVal,
+        email:  emailVal,
+        role:   roleVal,
+        region: regionVal || null
+      });
+
+      // Show success immediately
       waitlistForm.hidden = true;
       waitlistSuccess.hidden = false;
     });
   }
 
-  // ---------- Contact form ----------
+  // ---------- Contact form → Supabase ----------
   var contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var data = { timestamp: new Date().toISOString() };
-      new FormData(contactForm).forEach(function (v, k) { data[k] = v; });
+      var fd = new FormData(contactForm);
 
-      var msgs = JSON.parse(localStorage.getItem('dht_contacts') || '[]');
-      msgs.push(data);
-      localStorage.setItem('dht_contacts', JSON.stringify(msgs));
+      sbInsert('contacts', {
+        name:    fd.get('contact-name')    || '',
+        email:   fd.get('contact-email')   || '',
+        subject: fd.get('contact-subject') || '',
+        message: fd.get('contact-message') || '',
+        status:  'new'
+      });
 
       var btn = contactForm.querySelector('button[type="submit"]');
       var orig = btn.textContent;

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHT Admin Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="assets/images/logo.jpeg" alt="DHT" class="login-logo-img">
+        <div>
+          <div class="login-logo-text">DARWIN<span>HAS</span>TALENT</div>
+          <div class="login-logo-sub">Admin Portal</div>
+        </div>
+      </div>
+      <h1>Sign In</h1>
+      <p class="login-desc">Authorised staff only.</p>
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="admin@darwinhastalents.com.au" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+        </div>
+        <div class="login-error" id="loginError" hidden></div>
+        <button type="submit" class="btn-login" id="loginBtn">Sign In</button>
+      </form>
+      <a href="index.html" class="back-link">&larr; Back to website</a>
+    </div>
+  </div>
+
+  <!-- ===== MAIN PORTAL ===== -->
+  <div class="portal" id="portal" hidden>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="assets/images/logo.jpeg" alt="DHT" class="sidebar-logo-img">
+        <div>
+          <div class="sidebar-logo-text">DHT</div>
+          <div class="sidebar-logo-sub">Admin</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Overview
+        </button>
+        <button class="nav-item" data-tab="participants">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Participants
+          <span class="nav-badge" id="navBadgeParticipants"></span>
+        </button>
+        <button class="nav-item" data-tab="donations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Donations
+        </button>
+        <button class="nav-item" data-tab="messages">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Messages
+          <span class="nav-badge" id="navBadgeMessages"></span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="admin-user" id="adminUserLabel"></div>
+        <button class="btn-signout" id="signOutBtn">Sign Out</button>
+        <a href="index.html" class="back-site-link">&larr; View Website</a>
+      </div>
+    </aside>
+
+    <!-- Mobile header -->
+    <header class="mobile-header">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span class="mobile-title">DHT Admin</span>
+    </header>
+
+    <!-- Main content -->
+    <main class="main-content">
+
+      <!-- ===== OVERVIEW TAB ===== -->
+      <section class="tab-panel active" id="tab-overview">
+        <div class="page-header">
+          <h1>Overview</h1>
+          <button class="btn-refresh" id="refreshBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Refresh
+          </button>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value" id="statTotal">—</div>
+              <div class="stat-label">Total Registrations</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="18" r="3"/><circle cx="19" cy="16" r="3"/><polyline points="12 18 12 2 22 5"/></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value" id="statMusicians">—</div>
+              <div class="stat-label">Musicians / Artists</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--coral">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value" id="statDonationTotal">—</div>
+              <div class="stat-label">Total Donated (AUD)</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value" id="statNewMessages">—</div>
+              <div class="stat-label">Unread Messages</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-grid">
+          <div class="overview-card">
+            <h3>Registrations by Role</h3>
+            <div class="bar-chart" id="roleChart"></div>
+          </div>
+          <div class="overview-card">
+            <h3>Registrations by Region</h3>
+            <div class="bar-chart" id="regionChart"></div>
+          </div>
+          <div class="overview-card">
+            <h3>Recent Sign-ups</h3>
+            <div class="recent-list" id="recentList"></div>
+          </div>
+          <div class="overview-card">
+            <h3>Recent Donations</h3>
+            <div class="recent-list" id="recentDonations"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PARTICIPANTS TAB ===== -->
+      <section class="tab-panel" id="tab-participants">
+        <div class="page-header">
+          <h1>Participants</h1>
+          <button class="btn-export" id="exportParticipants">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export CSV
+          </button>
+        </div>
+        <div class="table-controls">
+          <input type="search" class="table-search" id="participantSearch" placeholder="Search name or email...">
+          <select class="table-filter" id="roleFilter">
+            <option value="">All Roles</option>
+            <option value="Musician / Artist">Musicians</option>
+            <option value="Parent / Guardian">Parents</option>
+            <option value="Teacher / Educator">Teachers</option>
+            <option value="Potential Sponsor / Partner">Sponsors</option>
+            <option value="Community Member / Supporter">Community</option>
+          </select>
+          <select class="table-filter" id="regionFilter">
+            <option value="">All Regions</option>
+            <option value="Darwin / Top End">Darwin / Top End</option>
+            <option value="Katherine / Big Rivers">Katherine</option>
+            <option value="Tennant Creek / Barkly">Tennant Creek</option>
+            <option value="Alice Springs / Red Centre">Alice Springs</option>
+            <option value="Outside the NT">Outside NT</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="participantsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Region</th>
+                <th>Registered</th>
+              </tr>
+            </thead>
+            <tbody id="participantsBody"></tbody>
+          </table>
+          <div class="table-empty" id="participantsEmpty" hidden>No registrations yet.</div>
+        </div>
+        <div class="table-footer" id="participantCount"></div>
+      </section>
+
+      <!-- ===== DONATIONS TAB ===== -->
+      <section class="tab-panel" id="tab-donations">
+        <div class="page-header">
+          <h1>Donations</h1>
+          <button class="btn-primary-action" id="addDonationBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Log Donation
+          </button>
+        </div>
+
+        <div class="donation-summary">
+          <div class="donation-sum-item">
+            <span class="donation-sum-label">Total Raised</span>
+            <span class="donation-sum-value" id="donationGrandTotal">$0.00</span>
+          </div>
+          <div class="donation-sum-item">
+            <span class="donation-sum-label">No. of Donations</span>
+            <span class="donation-sum-value" id="donationCount">0</span>
+          </div>
+          <div class="donation-sum-item">
+            <span class="donation-sum-label">Average Donation</span>
+            <span class="donation-sum-value" id="donationAvg">$0.00</span>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table" id="donationsTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Amount</th>
+                <th>Reference</th>
+                <th>Notes</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="donationsBody"></tbody>
+          </table>
+          <div class="table-empty" id="donationsEmpty" hidden>No donations recorded yet. Use "Log Donation" to add one.</div>
+        </div>
+      </section>
+
+      <!-- ===== MESSAGES TAB ===== -->
+      <section class="tab-panel" id="tab-messages">
+        <div class="page-header">
+          <h1>Messages</h1>
+          <button class="btn-export" id="exportMessages">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export CSV
+          </button>
+        </div>
+        <div class="table-controls">
+          <input type="search" class="table-search" id="messageSearch" placeholder="Search messages...">
+          <select class="table-filter" id="statusFilter">
+            <option value="">All Statuses</option>
+            <option value="new">New</option>
+            <option value="read">Read</option>
+            <option value="replied">Replied</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="messagesTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="messagesBody"></tbody>
+          </table>
+          <div class="table-empty" id="messagesEmpty" hidden>No messages yet.</div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== ADD DONATION MODAL ===== -->
+  <div class="modal-overlay" id="donationModal" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Log Donation</h2>
+        <button class="modal-close" id="closeDonationModal">&times;</button>
+      </div>
+      <form id="donationForm" novalidate>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>Donor Name</label>
+            <input type="text" id="donorName" placeholder="Full name (optional)">
+          </div>
+          <div class="form-group">
+            <label>Donor Email</label>
+            <input type="email" id="donorEmail" placeholder="email (optional)">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>Amount (AUD) <span class="required">*</span></label>
+            <input type="number" id="donorAmount" placeholder="0.00" step="0.01" min="0" required>
+          </div>
+          <div class="form-group">
+            <label>Bank Reference</label>
+            <input type="text" id="donorReference" placeholder="e.g. DHT Donation">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="donorNotes" rows="3" placeholder="Any additional notes..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelDonationBtn">Cancel</button>
+          <button type="submit" class="btn-save">Save Donation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

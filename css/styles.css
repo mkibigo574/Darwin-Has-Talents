@@ -104,15 +104,17 @@ a:hover { color: var(--primary-hover); }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 4vw, 2.85rem);
-  font-weight: 800;
-  line-height: 1.18;
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.12;
   margin-bottom: 18px;
   color: var(--secondary);
+  letter-spacing: -0.015em;
 }
 
 .section-subtitle {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
+  font-weight: 500;
   line-height: 1.8;
   color: var(--text-muted);
 }
@@ -297,16 +299,39 @@ a:hover { color: var(--primary-hover); }
 
 /* ---------- HERO (dark section) ---------- */
 .hero {
-  min-height: 100vh;
-  background: linear-gradient(145deg, #1F2A44 0%, #2A3858 60%, #1C2C4A 100%);
+  height: 100vh;
+  background: #0d1420;
   display: flex;
   align-items: center;
-  padding: 110px 0 80px;
+  padding-top: 76px;
   position: relative;
   overflow: hidden;
 }
 
-.hero-bg-effects { position: absolute; inset: 0; pointer-events: none; }
+/* ---- Video background ---- */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.hero-video.loaded { opacity: 1; }
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to right, rgba(10,16,32,0.88) 40%, rgba(10,16,32,0.45) 100%),
+    linear-gradient(to top, rgba(10,16,32,0.75) 0%, transparent 50%);
+}
+
+.hero-bg-effects { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
 
 .hero-glow { position: absolute; border-radius: 50%; filter: blur(90px); }
 .hero-glow--1 {
@@ -346,7 +371,7 @@ a:hover { color: var(--primary-hover); }
   gap: 56px;
   align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .hero-badge {
@@ -378,11 +403,13 @@ a:hover { color: var(--primary-hover); }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  font-size: clamp(3rem, 6vw, 5.4rem);
   font-weight: 900;
-  line-height: 1.08;
+  line-height: 1.04;
   color: #fff;
   margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
   animation: fadeUp 0.65s ease-out 0.1s both;
 }
 
@@ -394,11 +421,12 @@ a:hover { color: var(--primary-hover); }
 }
 
 .hero-subtitle {
-  font-size: clamp(0.98rem, 1.7vw, 1.13rem);
-  color: rgba(234,234,234,0.62);
-  line-height: 1.8;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  font-weight: 500;
+  color: rgba(234,234,234,0.82);
+  line-height: 1.75;
   margin-bottom: 36px;
-  max-width: 480px;
+  max-width: 520px;
   animation: fadeUp 0.65s ease-out 0.2s both;
 }
 
@@ -576,7 +604,7 @@ a:hover { color: var(--primary-hover); }
   bottom: 28px; left: 50%;
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 8px;
-  opacity: 0.35;
+  opacity: 0.6;
   z-index: 3;
 }
 .hero-scroll-indicator span {
@@ -649,10 +677,11 @@ a:hover { color: var(--primary-hover); }
 
 .pillar-card h3 {
   font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
   color: var(--secondary);
   margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 
 .pillar-card p {
@@ -875,10 +904,11 @@ a:hover { color: var(--primary-hover); }
 }
 .timeline-card h3 {
   font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: 900;
   color: #fff;
   margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 .timeline-card p {
   font-size: 0.88rem;
@@ -986,10 +1016,11 @@ a:hover { color: var(--primary-hover); }
 
 .portal-card h3 {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 900;
   color: var(--secondary);
   margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 .portal-card > p {
   font-size: 0.9rem;
@@ -1772,7 +1803,7 @@ a:hover { color: var(--primary-hover); }
   /* Keep toggle white always on mobile */
   .navbar.scrolled .nav-toggle span { background: var(--secondary); }
 
-  .hero { padding: 88px 0 56px; }
+  .hero { height: 100vh; padding-top: 62px; }
   .hero-stats { width: 100%; }
 
   .pillars-grid { grid-template-columns: 1fr; }
@@ -1802,4 +1833,185 @@ a:hover { color: var(--primary-hover); }
   .hero-cta .btn { justify-content: center; }
   .form-row-2 { grid-template-columns: 1fr; }
   .portals-grid { max-width: 100%; }
+}
+
+/* ========== HERO PRIZES ========== */
+.hero-prizes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0 28px;
+}
+.hero-prize-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+}
+.hero-prize-item svg {
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* ========== DONATIONS SECTION ========== */
+.donate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.donate-card {
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.donate-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-md);
+  background: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+.donate-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+.donate-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted-dark);
+  line-height: 1.6;
+}
+.bank-details {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bank-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.bank-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.bank-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font-display);
+}
+.bank-placeholder {
+  color: var(--primary);
+  font-style: italic;
+}
+.donate-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.donate-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text-muted-dark);
+}
+.donate-list li svg { color: var(--primary); flex-shrink: 0; }
+.donate-card--cta {
+  background: linear-gradient(135deg, rgba(255,107,107,0.12) 0%, rgba(255,154,139,0.06) 100%);
+  border-color: rgba(255,107,107,0.25);
+}
+.donate-note {
+  font-size: 0.8rem;
+  color: var(--text-muted-dark);
+  margin-top: 8px;
+}
+
+/* ========== RESOURCES / FORMS SECTION ========== */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+.resource-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.resource-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.resource-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  background: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+.resource-content { flex: 1; }
+.resource-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 6px;
+}
+.resource-content p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.resource-btn {
+  font-size: 0.85rem;
+  padding: 9px 18px;
+}
+.resources-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 36px;
+  padding: 18px 22px;
+  background: var(--primary-soft);
+  border: 1px solid rgba(255,107,107,0.15);
+  border-radius: var(--r-md);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.resources-note svg { color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+.resources-note a { color: var(--primary); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .donate-grid { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .resource-card { flex-direction: column; }
+  .hero-prizes { margin: 16px 0 22px; }
 }
